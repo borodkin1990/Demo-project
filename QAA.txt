@@ -1,0 +1,19 @@
+public class MovieSearch {
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Borodkin.V\\Documents\\Личное\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("file:///C:/directory%20B/Project/HW25/index.html");
+
+        WebElement search = driver.findElement(By.id("search"));
+        search.sendKeys("Matrix");
+        WebElement getBtn = driver.findElement(By.xpath("/html/body/button"));
+        getBtn.click();
+
+        WebElement year = driver.findElement(By.xpath("//*[text()='1993']"));
+        Assert.assertEquals(year.isDisplayed(), true);
+
+        WebElement dir = driver.findElement (By.xpath ("//*[contains(text(),'N/A')]"));
+        Assert.assertEquals(dir.isDisplayed(), true);
+    }
+}
