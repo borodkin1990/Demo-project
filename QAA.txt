@@ -4,16 +4,21 @@ public class MovieSearch {
         WebDriver driver = new ChromeDriver();
 
         driver.get("file:///C:/directory%20B/Project/HW25/index.html");
-
         WebElement search = driver.findElement(By.id("search"));
         search.sendKeys("Matrix");
         WebElement getBtn = driver.findElement(By.xpath("/html/body/button"));
         getBtn.click();
-
-        WebElement year = driver.findElement(By.xpath("//*[text()='1993']"));
-        Assert.assertEquals(year.isDisplayed(), true);
-
-        WebElement dir = driver.findElement (By.xpath ("//*[contains(text(),'N/A')]"));
-        Assert.assertEquals(dir.isDisplayed(), true);
     }
-}
+    @Test
+    public static void getYear(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        WebElement year = driver.findElement(By.xpath("//*[text()='1993']"));
+        String par = year.getText();
+        Assert.assertEquals(par, year);
+    }
+    @Test
+    public static void getDir(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        WebElement dir = driver.findElement (By.xpath ("//*[contains(text(),'N/A')]"));
+        String par2 = dir.getText();
+        Assert.assertEquals(par2, "N/A");
